@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="674db11f-d287-4848-be62-bd12676eeb2f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="querySearch" class="java.lang.String"/>
+	<parameter name="searchBy" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[Select * From Skripsi]]>
+	</queryString>
+	<field name="id_skripsi" class="java.lang.Integer"/>
+	<field name="judul" class="java.lang.String"/>
+	<field name="penulis" class="java.lang.String"/>
+	<field name="jumlah_halaman" class="java.lang.Integer"/>
+	<field name="tahun_terbit" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="31" width="262" height="20" forecolor="#006633" uuid="6d31de4e-2d2a-40ed-aa5e-4c01e4370173"/>
+				<textElement>
+					<font fontName="Bodoni MT Black" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATA SKRIPSI  SISFO-PUS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="33" uuid="5a568c9c-37e7-415b-8526-3ddcb0541c38"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["hasil pencarian dari " + $F{querySearch} berdasarkan pada kolom " + $F{searchBy}+ " hasilnya adalah"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="41" width="100" height="20" uuid="25c1e573-d600-4561-ba6a-e21f551f454d"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID SKRIPSI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="41" width="100" height="20" uuid="ad8993e5-055c-49fc-98ba-fb2817bc6e01"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUDUL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="41" width="100" height="20" uuid="2bc7e727-c6f4-4b96-a166-b9d3a1ba69c5"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PENULIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="41" width="100" height="20" uuid="5f708326-9d74-4abe-bf1d-c893e402012e"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUMLAH HALAMAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="41" width="100" height="20" uuid="0a0fd348-bcb7-416d-96a2-9a2ed11b5d2a"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TAHUN TERBIT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="23" y="0" width="100" height="20" uuid="474b31f2-e47a-460b-9a29-346f06e76547"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{id_skripsi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="0" width="100" height="20" uuid="609fb8c4-9df9-4a32-85ca-d1e2c90412a3"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{judul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="0" width="100" height="20" uuid="1c25b3d1-9447-4191-b4c4-8a7f2a4fdf14"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{penulis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="100" height="20" uuid="e608b036-62db-4397-9da9-d7282960b1f9"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{jumlah_halaman}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="100" height="20" uuid="918671c9-fe08-4bc3-92a8-4cc4e9470897"/>
+				<box>
+					<pen lineWidth="1.5"/>
+					<topPen lineWidth="1.5"/>
+					<leftPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+					<rightPen lineWidth="1.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{tahun_terbit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package UasPbo;
-
 import Coding.Buku;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -11,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -19,15 +16,31 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
 /**
  *
  * @author Lenovo
  */
 public class DataBuku extends javax.swing.JFrame {
-    ArrayList<Buku> Buku;
+
+   ArrayList<Buku> Buku;
     private int id=0;
     /**
      * Creates new form DataBuku
@@ -53,7 +66,7 @@ public class DataBuku extends javax.swing.JFrame {
     Tahun.setText(" ");
     Jumlah.setText(" ");    
     }
-    private void tampil() {
+     private void tampil() {
         EntityManager entityManager = Persistence.createEntityManagerFactory("PerpusPU").createEntityManager();
         entityManager.getTransaction().begin();
         TypedQuery<Buku> querySelectAll = entityManager.createNamedQuery("Buku.findAll", Buku.class);
@@ -85,66 +98,35 @@ public class DataBuku extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         Isbn = new javax.swing.JTextField();
+        Sub = new javax.swing.JTextField();
         JudulBuku = new javax.swing.JTextField();
         Tulis = new javax.swing.JTextField();
         Terbit = new javax.swing.JTextField();
         Tahun = new javax.swing.JTextField();
         Jumlah = new javax.swing.JTextField();
-        Simpan = new javax.swing.JButton();
-        Hapus = new javax.swing.JButton();
-        Ubah = new javax.swing.JButton();
-        Sub = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         DataBuku = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        Cari = new javax.swing.JTextField();
+        Simpan = new javax.swing.JButton();
+        Ubah = new javax.swing.JButton();
+        Hapus = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Search = new javax.swing.JTextField();
+        Cari = new javax.swing.JButton();
         Sort = new javax.swing.JComboBox<>();
-        Search = new javax.swing.JButton();
         Cetak = new javax.swing.JButton();
+        Back = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 250, 30));
-        getContentPane().add(JudulBuku, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 250, 30));
-        getContentPane().add(Tulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 250, 30));
-        getContentPane().add(Terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, 30));
-        getContentPane().add(Tahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 250, 30));
-        getContentPane().add(Jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 240, 30));
-
-        Simpan.setBackground(new java.awt.Color(153, 255, 153));
-        Simpan.setText("Simpan");
-        Simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SimpanActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, -1, -1));
-
-        Hapus.setBackground(new java.awt.Color(153, 255, 153));
-        Hapus.setText("Hapus");
-        Hapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HapusActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-
-        Ubah.setBackground(new java.awt.Color(153, 255, 153));
-        Ubah.setText("Ubah");
-        Ubah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UbahActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
-        getContentPane().add(Sub, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (2).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 510));
+        getContentPane().add(Isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 200, 30));
+        getContentPane().add(Sub, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 200, 30));
+        getContentPane().add(JudulBuku, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 200, 30));
+        getContentPane().add(Tulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 200, 30));
+        getContentPane().add(Terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 200, 30));
+        getContentPane().add(Tahun, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 200, 30));
+        getContentPane().add(Jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, 200, 30));
 
         DataBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,42 +144,92 @@ public class DataBuku extends javax.swing.JFrame {
                 DataBukuMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(DataBuku);
+        jScrollPane1.setViewportView(DataBuku);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 420, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 340, 340));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Cari");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
-        getContentPane().add(Cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 120, 30));
-
-        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISBN", "Judul Buku", "Subjudul", "Penulis", "Penerbit", "Tahun Terbit" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, -1, -1));
-
-        Search.setBackground(new java.awt.Color(153, 255, 153));
-        Search.setText("Cari");
-        Search.addActionListener(new java.awt.event.ActionListener() {
+        Simpan.setBackground(new java.awt.Color(0, 153, 102));
+        Simpan.setForeground(new java.awt.Color(255, 255, 255));
+        Simpan.setText("Simpan");
+        Simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchActionPerformed(evt);
+                SimpanActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, -1, -1));
+        getContentPane().add(Simpan, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, -1, -1));
 
-        Cetak.setBackground(new java.awt.Color(153, 255, 153));
+        Ubah.setBackground(new java.awt.Color(0, 153, 102));
+        Ubah.setForeground(new java.awt.Color(255, 255, 255));
+        Ubah.setText("Ubah");
+        Ubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UbahActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Ubah, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 490, -1, -1));
+
+        Hapus.setBackground(new java.awt.Color(0, 153, 102));
+        Hapus.setForeground(new java.awt.Color(255, 255, 255));
+        Hapus.setText("Hapus");
+        Hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HapusActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Hapus, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("CARI");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 40, 20));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 200, 30));
+
+        Cari.setBackground(new java.awt.Color(0, 153, 102));
+        Cari.setForeground(new java.awt.Color(255, 255, 255));
+        Cari.setText("Cari");
+        Cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CariActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Cari, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
+
+        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISBN", "Judul", "Subjudul", "Penulis", "Penerbit", "Tahun Terbit", " " }));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
+
+        Cetak.setBackground(new java.awt.Color(0, 153, 102));
+        Cetak.setForeground(new java.awt.Color(255, 255, 255));
         Cetak.setText("Cetak");
         Cetak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CetakActionPerformed(evt);
             }
         });
-        getContentPane().add(Cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, -1, -1));
+        getContentPane().add(Cetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (9).png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 500, 510));
+        Back.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Back.setForeground(new java.awt.Color(255, 255, 255));
+        Back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Back.setText("Back");
+        Back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (2).png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackMouseClicked
+         Dashboard Back = new Dashboard();
+            Back.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_BackMouseClicked
 
     private void SimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SimpanActionPerformed
     String ISBN = Isbn.getText().trim();
@@ -207,9 +239,8 @@ public class DataBuku extends javax.swing.JFrame {
     String Penerbit =Terbit.getText().trim();
      int TahunTerbit = Integer.parseInt(Tahun.getText());
      int JumlahHalaman = Integer.parseInt(Jumlah.getText());
-   
-
-    EntityManager entityManager = Persistence.createEntityManagerFactory("PerpusPU").createEntityManager();
+     
+     EntityManager entityManager = Persistence.createEntityManagerFactory("PerpusPU").createEntityManager();
     entityManager.getTransaction().begin();
     Buku b = new Buku();
     b.setIsbn(ISBN);
@@ -221,8 +252,7 @@ public class DataBuku extends javax.swing.JFrame {
     b.setJumlahHalaman(JumlahHalaman);
     entityManager.persist(b);
     entityManager.getTransaction().commit();
-
-
+    
     Isbn.setText(" ");
     JudulBuku.setText(" ");
     Sub.setText(" ");
@@ -231,6 +261,39 @@ public class DataBuku extends javax.swing.JFrame {
     Tahun.setText(" ");
     Jumlah.setText(" ");
     }//GEN-LAST:event_SimpanActionPerformed
+
+    private void UbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahActionPerformed
+       String ISBN = Isbn.getText().trim();
+    String Judul =JudulBuku.getText().trim();
+    String Subjudul =Sub.getText().trim();
+    String Penulis =Tulis.getText().trim();
+    String Penerbit =Terbit.getText().trim();
+     int TahunTerbit = Integer.parseInt(Tahun.getText());
+     int JumlahHalaman = Integer.parseInt(Jumlah.getText());
+     
+       EntityManagerFactory emf=Persistence.createEntityManagerFactory("PerpusPU");  
+        EntityManager em=emf.createEntityManager();  
+        Buku b = new Buku();
+       b.setIsbn(ISBN);
+       b.setJudul(Judul);
+       b.setSubjudul(Subjudul);
+       b.setPenulis(Penulis);
+       b.setPenerbit(Penerbit);
+       b.setTahunTerbit(TahunTerbit);
+       b.setJumlahHalaman(JumlahHalaman);
+        em.getTransaction().begin();
+        em.merge(b);
+        em.getTransaction().commit();
+    
+    Isbn.setText(" ");
+    JudulBuku.setText(" ");
+    Sub.setText(" ");
+    Tulis.setText(" ");
+    Terbit.setText(" ");
+    Tahun.setText(" ");
+    Jumlah.setText(" ");
+    
+    }//GEN-LAST:event_UbahActionPerformed
 
     private void HapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HapusActionPerformed
         String ISBN = Isbn.getText().trim();
@@ -252,54 +315,23 @@ public class DataBuku extends javax.swing.JFrame {
     Jumlah.setText(" ");
     }//GEN-LAST:event_HapusActionPerformed
 
-    private void UbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahActionPerformed
-    String ISBN = Isbn.getText().trim();
-    String Judul =JudulBuku.getText().trim();
-    String Subjudul =Sub.getText().trim();
-    String Penulis =Tulis.getText().trim();
-    String Penerbit =Terbit.getText().trim();
-     int TahunTerbit = Integer.parseInt(Tahun.getText());
-     int JumlahHalaman = Integer.parseInt(Jumlah.getText());
-     
-        EntityManager entityManager = Persistence.createEntityManagerFactory("PerpusPU").createEntityManager();
-    entityManager.getTransaction().begin();
-    Buku b = new Buku();
-    b.setIsbn(ISBN);
-    b.setJudul(Judul);
-    b.setSubjudul(Subjudul);
-    b.setPenulis(Penulis);
-    b.setPenerbit(Penerbit);
-    b.setTahunTerbit(TahunTerbit);
-    b.setJumlahHalaman(JumlahHalaman);
-    entityManager.persist(b);
-    entityManager.getTransaction().commit();
-    
-    Isbn.setText(" ");
-    JudulBuku.setText(" ");
-    Sub.setText(" ");
-    Tulis.setText(" ");
-    Terbit.setText(" ");
-    Tahun.setText(" ");
-    Jumlah.setText(" ");
-    }//GEN-LAST:event_UbahActionPerformed
-
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+    private void CariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CariActionPerformed
         try {
             String selection = (String) Sort.getSelectedItem();
-            String searchTerm = Cari.getText().trim();
+            String searchTerm = Search.getText().trim();
 
             // Building the JPA query dynamically based on the selected criteria
-            String queryString = "SELECT d FROM DataBuku d WHERE ";
+            String queryString = "SELECT d FROM Buku d WHERE ";
 
-            switch (selection.toLowerCase()) {
+             switch (selection.toLowerCase()) {
                 case "isbn":
                     queryString += "LOWER(d.isbn) LIKE LOWER(:searchTerm)";
                     break;
                 case "judul":
                     queryString += "LOWER(d.judul) LIKE LOWER(:searchTerm)";
                     break;
-                case "sub judul":
-                    queryString += "LOWER(d.subJudul) LIKE LOWER(:searchTerm)";
+                case "subjudul":
+                    queryString += "LOWER(d.subjudul) LIKE LOWER(:searchTerm)";
                     break;
                 case "penulis":
                     queryString += "LOWER(d.penulis) LIKE LOWER(:searchTerm)";
@@ -308,10 +340,7 @@ public class DataBuku extends javax.swing.JFrame {
                     queryString += "LOWER(d.penerbit) LIKE LOWER(:searchTerm)";
                     break;
                 case "tahun terbit":
-                    queryString += "LOWER(d.tahunTerbit) LIKE LOWER(:searchTerm)";
-                    break;
-                case "jumlah halaman":
-                    queryString += "LOWER(d.jumlahHalaman) LIKE LOWER(:searchTerm)";
+                    queryString += "CAST(d.tahunTerbit AS text) LIKE LOWER(:searchTerm)";
                     break;
                 default:
                     throw new IllegalArgumentException("No search criteria selected.");
@@ -326,10 +355,10 @@ public class DataBuku extends javax.swing.JFrame {
                 throw new IllegalArgumentException("No search criteria selected.");
             }
 
-            TypedQuery<DataBuku> query = em.createQuery(queryString, DataBuku.class);
+            TypedQuery<Buku> query = em.createQuery(queryString, Buku.class);
             query.setParameter("searchTerm", "%" + searchTerm + "%");
 
-            List<DataBuku> results = query.getResultList();
+            List<Buku> results = query.getResultList();
 
             DefaultTableModel dataModel = new DefaultTableModel();
 
@@ -344,11 +373,11 @@ public class DataBuku extends javax.swing.JFrame {
             // ... add other columns as needed
 
             // Add rows to the model
-            for (DataBuku result : results) {
+            for (Buku result : results) {
                 Object[] rowData = {
                     result.getIsbn(),
                     result.getJudul(),
-                    result.getSubJudul(),
+                    result.getSubjudul(),
                     result.getPenulis(),
                     result.getPenerbit(),
                     result.getTahunTerbit(),
@@ -363,10 +392,70 @@ public class DataBuku extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_SearchActionPerformed
+    }//GEN-LAST:event_CariActionPerformed
+
+    private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
+         try {
+            String selection = (String) Sort.getSelectedItem();
+            String searchTerm = Cari.getText().trim();
+
+            // Building the JPA query dynamically based on the selected criteria
+            String queryString = "SELECT d FROM Buku d  WHERE ";
+            
+            switch (selection.toLowerCase()) {
+                case "isbn":
+                    queryString += "LOWER(d.isbn) LIKE LOWER(:searchTerm)";
+                    break;
+                case "judul":
+                    queryString += "LOWER(d.judul) LIKE LOWER(:searchTerm)";
+                    break;
+                case "subjudul":
+                    queryString += "LOWER(d.subjudul) LIKE LOWER(:searchTerm)";
+                    break;
+                case "penulis":
+                    queryString += "LOWER(d.penulis) LIKE LOWER(:searchTerm)";
+                    break;
+                case "penerbit":
+                    queryString += "LOWER(d.penerbit) LIKE LOWER(:searchTerm)";
+                    break;
+                case "tahun terbit":
+                    queryString += "CAST(d.tahunTerbit AS text) LIKE LOWER(:searchTerm)";
+                    break;
+                default:
+                    throw new IllegalArgumentException("No search criteria selected.");
+            }
+
+            // Create and execute the JPA query
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("PerpusPU");
+            EntityManager em = emf.createEntityManager();
+            
+             // Check if WHERE clause is not empty
+            if (queryString.endsWith(" WHERE ")) {
+                throw new IllegalArgumentException("No search criteria selected.");
+            }
+            
+            TypedQuery<Buku> query = em.createQuery(queryString, Buku.class);
+            query.setParameter("searchTerm", "%"+searchTerm+"%");
+         
+            
+            List<Buku> results = query.getResultList();
+             Map<String,Object> parameter = new HashMap<>();
+           parameter.put("querySearch", searchTerm);
+           parameter.put("searchBy", selection);
+           
+           String jrxmlFile = new String("src/UasPbo/Buku.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jrxmlFile);
+            JasperPrint jp = JasperFillManager.fillReport(jr, parameter, new JRBeanCollectionDataSource(results));
+            JasperViewer.viewReport(jp, false);
+        } catch (JRException ex) {
+            Logger.getLogger(Buku.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Buku.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }//GEN-LAST:event_CetakActionPerformed
 
     private void DataBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DataBukuMouseClicked
-       int row = DataBuku.getSelectedRow();
+        int row = DataBuku.getSelectedRow();
        Isbn.setText(DataBuku.getModel().getValueAt(row,0).toString());
        JudulBuku.setText(DataBuku.getModel().getValueAt(row,1).toString());
        Sub.setText(DataBuku.getModel().getValueAt(row,2).toString());
@@ -376,10 +465,6 @@ public class DataBuku extends javax.swing.JFrame {
        Jumlah.setText(DataBuku.getModel().getValueAt(row,6).toString());
     }//GEN-LAST:event_DataBukuMouseClicked
 
-    private void CetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CetakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CetakActionPerformed
- 
     /**
      * @param args the command line arguments
      */
@@ -416,14 +501,15 @@ public class DataBuku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Cari;
+    private javax.swing.JLabel Back;
+    private javax.swing.JButton Cari;
     private javax.swing.JButton Cetak;
     private javax.swing.JTable DataBuku;
     private javax.swing.JButton Hapus;
     private javax.swing.JTextField Isbn;
     private javax.swing.JTextField JudulBuku;
     private javax.swing.JTextField Jumlah;
-    private javax.swing.JButton Search;
+    private javax.swing.JTextField Search;
     private javax.swing.JButton Simpan;
     private javax.swing.JComboBox<String> Sort;
     private javax.swing.JTextField Sub;
@@ -433,8 +519,6 @@ public class DataBuku extends javax.swing.JFrame {
     private javax.swing.JButton Ubah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

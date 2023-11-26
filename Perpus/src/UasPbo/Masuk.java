@@ -17,15 +17,14 @@ import javax.swing.JOptionPane;
 public class Masuk extends javax.swing.JFrame {
 
     /**
-     * Creates new form Login
+     * Creates new form Masuk
      */
-    public Masuk() {
+   public Masuk() {
         initComponents();
     }
      public void peringatan(String pesan) {
         JOptionPane.showMessageDialog(rootPane, pesan);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,29 +37,31 @@ public class Masuk extends javax.swing.JFrame {
         Username = new javax.swing.JTextField();
         Password = new javax.swing.JPasswordField();
         Login = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Username.setBorder(null);
-        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 256, 170, 20));
+        getContentPane().add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 270, 30));
 
         Password.setBorder(null);
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 160, 20));
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, 250, 30));
 
-        Login.setBackground(new java.awt.Color(0, 204, 0));
+        Login.setBackground(new java.awt.Color(0, 153, 102));
         Login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Login.setForeground(new java.awt.Color(255, 255, 255));
         Login.setText("LOGIN");
+        Login.setBorder(null);
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
             }
         });
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 50));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 360, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (4).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 510));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 790, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,7 +114,6 @@ public class Masuk extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Masuk.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -127,6 +127,6 @@ public class Masuk extends javax.swing.JFrame {
     private javax.swing.JButton Login;
     private javax.swing.JPasswordField Password;
     private javax.swing.JTextField Username;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

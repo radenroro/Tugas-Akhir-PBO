@@ -3,8 +3,9 @@
   <persistence-unit name="PerpusPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Coding.Login</class>
-    <class>Coding.Skripsi</class>
     <class>Coding.Buku</class>
+    <class>Coding.Peminjaman</class>
+    <class>Coding.Skripsi</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Perpus"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
