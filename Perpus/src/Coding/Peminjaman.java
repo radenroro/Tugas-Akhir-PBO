@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -29,10 +31,10 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Peminjaman.findBySemester", query = "SELECT p FROM Peminjaman p WHERE p.semester = :semester"),
     @NamedQuery(name = "Peminjaman.findByJurusan", query = "SELECT p FROM Peminjaman p WHERE p.jurusan = :jurusan"),
     @NamedQuery(name = "Peminjaman.findByAngkatan", query = "SELECT p FROM Peminjaman p WHERE p.angkatan = :angkatan"),
-    @NamedQuery(name = "Peminjaman.findByJenis", query = "SELECT p FROM Peminjaman p WHERE p.jenis = :jenis"),
     @NamedQuery(name = "Peminjaman.findByStatus", query = "SELECT p FROM Peminjaman p WHERE p.status = :status"),
     @NamedQuery(name = "Peminjaman.findByTanggalPeminjaman", query = "SELECT p FROM Peminjaman p WHERE p.tanggalPeminjaman = :tanggalPeminjaman"),
-    @NamedQuery(name = "Peminjaman.findByTanggalPengembalian", query = "SELECT p FROM Peminjaman p WHERE p.tanggalPengembalian = :tanggalPengembalian")})
+    @NamedQuery(name = "Peminjaman.findByTanggalPengembalian", query = "SELECT p FROM Peminjaman p WHERE p.tanggalPengembalian = :tanggalPengembalian"),
+    @NamedQuery(name = "Peminjaman.findByJumlahBuku", query = "SELECT p FROM Peminjaman p WHERE p.jumlahBuku = :jumlahBuku")})
 public class Peminjaman implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,8 +50,6 @@ public class Peminjaman implements Serializable {
     private String jurusan;
     @Column(name = "angkatan")
     private Integer angkatan;
-    @Column(name = "jenis")
-    private String jenis;
     @Column(name = "status")
     private String status;
     @Column(name = "tanggal_peminjaman")
@@ -58,6 +58,11 @@ public class Peminjaman implements Serializable {
     @Column(name = "tanggal_pengembalian")
     @Temporal(TemporalType.DATE)
     private Date tanggalPengembalian;
+    @Column(name = "jumlah_buku")
+    private Integer jumlahBuku;
+    @JoinColumn(name = "isbn", referencedColumnName = "isbn")
+    @ManyToOne
+    private Buku isbn;
 
     public Peminjaman() {
     }
@@ -106,14 +111,6 @@ public class Peminjaman implements Serializable {
         this.angkatan = angkatan;
     }
 
-    public String getJenis() {
-        return jenis;
-    }
-
-    public void setJenis(String jenis) {
-        this.jenis = jenis;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -136,6 +133,22 @@ public class Peminjaman implements Serializable {
 
     public void setTanggalPengembalian(Date tanggalPengembalian) {
         this.tanggalPengembalian = tanggalPengembalian;
+    }
+
+    public Integer getJumlahBuku() {
+        return jumlahBuku;
+    }
+
+    public void setJumlahBuku(Integer jumlahBuku) {
+        this.jumlahBuku = jumlahBuku;
+    }
+
+    public Buku getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(Buku isbn) {
+        this.isbn = isbn;
     }
 
     @Override
@@ -161,6 +174,10 @@ public class Peminjaman implements Serializable {
     @Override
     public String toString() {
         return "Coding.Peminjaman[ idPengguna=" + idPengguna + " ]";
+    }
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

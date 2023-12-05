@@ -13,13 +13,13 @@
 	<field name="subjudul" class="java.lang.String"/>
 	<field name="penulis" class="java.lang.String"/>
 	<field name="penerbit" class="java.lang.String"/>
-	<field name="tahun_terbit" class="java.lang.Integer"/>
-	<field name="jumlah_halaman" class="java.lang.Integer"/>
+	<field name="tahunTerbit" class="java.lang.Integer"/>
+	<field name="jumlahHalaman" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="46" splitType="Stretch">
 			<staticText>
 				<reportElement x="169" y="22" width="221" height="24" forecolor="#006633" uuid="c956eabe-7a0e-47a9-9558-31dc95bd0d34"/>
 				<textElement>
@@ -30,20 +30,12 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="567" height="35" uuid="e1db7fd5-07b8-48d2-8038-f979070881d1"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA["hasil pencarian dari " + $F{querySearch} berdasarkan pada kolom " + $F{searchBy}+ " hasilnya adalah"]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="24" y="41" width="50" height="20" uuid="46cfe0ce-9a6d-46a1-831f-c69e1b376279"/>
+				<reportElement x="0" y="41" width="50" height="20" uuid="46cfe0ce-9a6d-46a1-831f-c69e1b376279"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -57,7 +49,7 @@
 				<text><![CDATA[ISBN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="74" y="41" width="79" height="20" uuid="6ef18559-49a9-4022-a537-ff355a6d618d"/>
+				<reportElement x="50" y="41" width="103" height="20" uuid="6ef18559-49a9-4022-a537-ff355a6d618d"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -71,7 +63,7 @@
 				<text><![CDATA[JUDUL BUKU]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="153" y="41" width="60" height="20" uuid="d2f9a436-ea9d-4b28-89e1-a6029b400886"/>
+				<reportElement x="153" y="41" width="109" height="20" uuid="d2f9a436-ea9d-4b28-89e1-a6029b400886"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -85,7 +77,7 @@
 				<text><![CDATA[SUBJUDUL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="213" y="41" width="56" height="20" uuid="5ffc1f9e-e21e-442c-b1ca-6c9ec30c4caf"/>
+				<reportElement x="262" y="41" width="84" height="20" uuid="5ffc1f9e-e21e-442c-b1ca-6c9ec30c4caf"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -99,7 +91,7 @@
 				<text><![CDATA[PENULIS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="269" y="41" width="67" height="20" uuid="8bc56b02-1872-4b2a-9737-d4eab32895dd"/>
+				<reportElement x="346" y="41" width="95" height="20" uuid="8bc56b02-1872-4b2a-9737-d4eab32895dd"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -113,7 +105,7 @@
 				<text><![CDATA[PENERBIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="337" y="41" width="77" height="20" uuid="05a87b3f-9a19-429e-9559-50b2f82286bc"/>
+				<reportElement x="441" y="41" width="43" height="20" uuid="05a87b3f-9a19-429e-9559-50b2f82286bc"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -127,7 +119,7 @@
 				<text><![CDATA[TAHUN TERBIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="414" y="41" width="100" height="20" uuid="9a97c8eb-9438-4799-b220-83f5d7b6da02"/>
+				<reportElement x="484" y="41" width="71" height="20" uuid="9a97c8eb-9438-4799-b220-83f5d7b6da02"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -140,12 +132,47 @@
 				</textElement>
 				<text><![CDATA[JUMLAH HALAMAN]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="111" y="0" width="118" height="20" uuid="e62a17ba-e808-4bc8-ba84-19d68f51a098"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{querySearch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" uuid="4c28aa38-aa1f-421f-9357-8f9b1638b924"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasil pencarian dari ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="0" width="100" height="20" uuid="391f7626-ee34-4bb1-96ba-f7ad9029758e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[berdasarkan pada kolom " ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="0" width="100" height="20" uuid="dd829d93-7d47-422d-929b-1b479180599f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[hasilnya adalah]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="329" y="0" width="112" height="20" uuid="85c8ca1e-fd51-449f-aa7c-83fcbc5d035a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{searchBy}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="24" y="0" width="50" height="20" uuid="a27e8956-c966-4dc8-8f67-6d0e6a7bda95"/>
+				<reportElement x="0" y="0" width="50" height="20" uuid="a27e8956-c966-4dc8-8f67-6d0e6a7bda95"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -156,7 +183,7 @@
 				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="0" width="79" height="20" uuid="daa769ad-d6e6-4936-81bc-01564ccda402"/>
+				<reportElement x="50" y="0" width="103" height="20" uuid="daa769ad-d6e6-4936-81bc-01564ccda402"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -167,7 +194,7 @@
 				<textFieldExpression><![CDATA[$F{judul}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="153" y="0" width="60" height="20" uuid="21e79017-0090-4f59-afa0-0f9e2a189272"/>
+				<reportElement x="153" y="0" width="109" height="20" uuid="21e79017-0090-4f59-afa0-0f9e2a189272"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -178,7 +205,7 @@
 				<textFieldExpression><![CDATA[$F{subjudul}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="213" y="0" width="56" height="20" uuid="28581ea4-2f52-4496-bab8-c230b3e86038"/>
+				<reportElement x="262" y="0" width="84" height="20" uuid="28581ea4-2f52-4496-bab8-c230b3e86038"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -189,7 +216,7 @@
 				<textFieldExpression><![CDATA[$F{penulis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="269" y="0" width="67" height="20" uuid="fdff1fc7-7d8e-433c-9c2d-7f667c5119a0"/>
+				<reportElement x="346" y="0" width="95" height="20" uuid="fdff1fc7-7d8e-433c-9c2d-7f667c5119a0"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -200,7 +227,7 @@
 				<textFieldExpression><![CDATA[$F{penerbit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="337" y="0" width="77" height="20" uuid="c5c6b157-83d7-4e04-bd8f-2a45584f0b1a"/>
+				<reportElement x="441" y="0" width="43" height="20" uuid="c5c6b157-83d7-4e04-bd8f-2a45584f0b1a"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -208,10 +235,10 @@
 					<bottomPen lineWidth="1.5"/>
 					<rightPen lineWidth="1.5"/>
 				</box>
-				<textFieldExpression><![CDATA[$F{tahun_terbit}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tahunTerbit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="414" y="0" width="100" height="20" uuid="c56dc65a-a1c9-48ef-aec1-64d3012e56f2"/>
+				<reportElement x="484" y="0" width="71" height="20" uuid="c56dc65a-a1c9-48ef-aec1-64d3012e56f2"/>
 				<box>
 					<pen lineWidth="1.5"/>
 					<topPen lineWidth="1.5"/>
@@ -219,7 +246,7 @@
 					<bottomPen lineWidth="1.5"/>
 					<rightPen lineWidth="1.5"/>
 				</box>
-				<textFieldExpression><![CDATA[$F{jumlah_halaman}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{jumlahHalaman}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

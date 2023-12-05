@@ -5,12 +5,14 @@
 package Coding;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,7 +37,6 @@ public class Buku implements Serializable {
     @Basic(optional = false)
     @Column(name = "isbn")
     private String isbn;
-    @Basic(optional = false)
     @Column(name = "judul")
     private String judul;
     @Column(name = "subjudul")
@@ -48,17 +49,14 @@ public class Buku implements Serializable {
     private Integer tahunTerbit;
     @Column(name = "jumlah_halaman")
     private Integer jumlahHalaman;
+    @OneToMany(mappedBy = "isbn")
+    private Collection<Peminjaman> peminjamanCollection;
 
     public Buku() {
     }
 
     public Buku(String isbn) {
         this.isbn = isbn;
-    }
-
-    public Buku(String isbn, String judul) {
-        this.isbn = isbn;
-        this.judul = judul;
     }
 
     public String getIsbn() {
@@ -115,6 +113,14 @@ public class Buku implements Serializable {
 
     public void setJumlahHalaman(Integer jumlahHalaman) {
         this.jumlahHalaman = jumlahHalaman;
+    }
+
+    public Collection<Peminjaman> getPeminjamanCollection() {
+        return peminjamanCollection;
+    }
+
+    public void setPeminjamanCollection(Collection<Peminjaman> peminjamanCollection) {
+        this.peminjamanCollection = peminjamanCollection;
     }
 
     @Override

@@ -292,11 +292,11 @@ public class DataSkripsi extends javax.swing.JFrame {
             String searchTerm = Search.getText().trim();
 
             // Building the JPA query dynamically based on the selected criteria
-            String queryString = "SELECT d FROM Buku d WHERE ";
+            String queryString = "SELECT d FROM Skripsi d WHERE ";
 
              switch (selection.toLowerCase()) {
-                case "id Skripsi":
-                    queryString += "LOWER(d.id_skripsi) LIKE LOWER(:searchTerm)";
+                case "id skripsi":
+                    queryString += "CAST(d.idSkripsi AS text) LIKE LOWER(:searchTerm)";
                     break;
                 case "judul":
                     queryString += "LOWER(d.judul) LIKE LOWER(:searchTerm)";
@@ -361,11 +361,11 @@ public class DataSkripsi extends javax.swing.JFrame {
             String searchTerm = Search.getText().trim();
 
             // Building the JPA query dynamically based on the selected criteria
-            String queryString = "SELECT d FROM Buku d WHERE ";
+            String queryString = "SELECT d FROM Skripsi d WHERE ";
 
              switch (selection.toLowerCase()) {
-                case "isbn":
-                    queryString += "LOWER(d.isbn) LIKE LOWER(:searchTerm)";
+                case "id skripsi":
+                    queryString += "CAST(d.idSkripsi AS text) LIKE LOWER(:searchTerm)";
                     break;
                 case "judul":
                     queryString += "LOWER(d.judul) LIKE LOWER(:searchTerm)";
@@ -383,21 +383,21 @@ public class DataSkripsi extends javax.swing.JFrame {
             // Create and execute the JPA query
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("PerpusPU");
             EntityManager em = emf.createEntityManager();
-            
+
             // Check if WHERE clause is not empty
             if (queryString.endsWith(" WHERE ")) {
                 throw new IllegalArgumentException("No search criteria selected.");
             }
-            
+
             TypedQuery<Skripsi> query = em.createQuery(queryString, Skripsi.class);
-            query.setParameter("searchTerm", "%"+searchTerm+"%");
-         
-              List<Skripsi> results = query.getResultList();
+            query.setParameter("searchTerm", "%" + searchTerm + "%");
+
+            List<Skripsi> results = query.getResultList();
              Map<String,Object> parameter = new HashMap<>();
            parameter.put("querySearch", searchTerm);
            parameter.put("searchBy", selection);
            
-           String jrxmlFile = new String("src/UasPbo/Skripsi.jrxml");
+           String jrxmlFile = "src/UasPbo/Skripsi.jrxml";
             JasperReport jr = JasperCompileManager.compileReport(jrxmlFile);
             JasperPrint jp = JasperFillManager.fillReport(jr, parameter, new JRBeanCollectionDataSource(results));
             JasperViewer.viewReport(jp, false);

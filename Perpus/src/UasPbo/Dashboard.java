@@ -29,7 +29,6 @@ public class Dashboard extends javax.swing.JFrame {
         Buku = new javax.swing.JTextField();
         Skripsi = new javax.swing.JTextField();
         Peminjaman = new javax.swing.JTextField();
-        Profil = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,7 +44,7 @@ public class Dashboard extends javax.swing.JFrame {
                 BukuMouseClicked(evt);
             }
         });
-        getContentPane().add(Buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 60, 20));
+        getContentPane().add(Buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 60, 20));
 
         Skripsi.setBackground(new java.awt.Color(255, 204, 0));
         Skripsi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -57,7 +56,7 @@ public class Dashboard extends javax.swing.JFrame {
                 SkripsiMouseClicked(evt);
             }
         });
-        getContentPane().add(Skripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 370, 70, 20));
+        getContentPane().add(Skripsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 70, 20));
 
         Peminjaman.setBackground(new java.awt.Color(255, 204, 0));
         Peminjaman.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -69,21 +68,9 @@ public class Dashboard extends javax.swing.JFrame {
                 PeminjamanMouseClicked(evt);
             }
         });
-        getContentPane().add(Peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 110, -1));
+        getContentPane().add(Peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 110, -1));
 
-        Profil.setBackground(new java.awt.Color(255, 204, 0));
-        Profil.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Profil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Profil.setText("PROFIL");
-        Profil.setBorder(null);
-        Profil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProfilMouseClicked(evt);
-            }
-        });
-        getContentPane().add(Profil, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 70, 20));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (3).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UasPbo/Travalizer - Desktop (10).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 510));
 
         pack();
@@ -102,16 +89,10 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_SkripsiMouseClicked
 
     private void PeminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PeminjamanMouseClicked
-         DataPeminjaman Dashboard = new DataPeminjaman();
+         PeminjamanBuku Dashboard = new PeminjamanBuku();
             Dashboard.setVisible(true);
            this.dispose();
     }//GEN-LAST:event_PeminjamanMouseClicked
-
-    private void ProfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProfilMouseClicked
-        Profil Dashboard = new Profil();
-            Dashboard.setVisible(true);
-           this.dispose();
-    }//GEN-LAST:event_ProfilMouseClicked
 
     /**
      * @param args the command line arguments
@@ -151,7 +132,6 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buku;
     private javax.swing.JTextField Peminjaman;
-    private javax.swing.JTextField Profil;
     private javax.swing.JTextField Skripsi;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
