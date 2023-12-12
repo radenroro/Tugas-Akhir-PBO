@@ -235,7 +235,7 @@ public class PeminjamanBuku extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, 20));
         getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 160, -1));
 
-        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Pengguna", "Nama", "Semester", "Jurusan", "Angkatan", "Status", "Jumlah Buku", " ", " " }));
+        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Pengguna", "Nama", "Semester", "Jurusan", "Angkatan", "Status", "Jumlah Buku", " ", " ", " " }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 120, -1));
 
         Cari.setBackground(new java.awt.Color(0, 153, 102));
@@ -284,6 +284,11 @@ public class PeminjamanBuku extends javax.swing.JFrame {
         Bulan.setBackground(new java.awt.Color(0, 153, 102));
         Bulan.setForeground(new java.awt.Color(255, 255, 255));
         Bulan.setText("Bulan");
+        Bulan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BulanMouseClicked(evt);
+            }
+        });
         getContentPane().add(Bulan, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, -1, -1));
 
         Terbanyak.setBackground(new java.awt.Color(0, 153, 102));
@@ -580,7 +585,7 @@ public class PeminjamanBuku extends javax.swing.JFrame {
             CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
             Root<Peminjaman> peminjamanRoot = cq.from(Peminjaman.class);
             Join<Peminjaman, Buku> bukuJoin = peminjamanRoot.join("isbn", JoinType.INNER);
-            Join<Buku, subjudul> kategoriJoin = bukuJoin.join("Subjudul", JoinType.INNER);
+            Join<Buku, Subjudul> kategoriJoin = bukuJoin.join("Subjudul", JoinType.INNER);
 
             cq.multiselect(
                     kategoriJoin.get("nama"), 
@@ -624,6 +629,12 @@ public class PeminjamanBuku extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_KategoriActionPerformed
+
+    private void BulanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BulanMouseClicked
+       LaporanBulanan Bulan = new LaporanBulanan();
+            Bulan.setVisible(true);
+            this.dispose();                          
+    }//GEN-LAST:event_BulanMouseClicked
 
     /**
      * @param args the command line arguments
